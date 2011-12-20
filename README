@@ -1,0 +1,26 @@
+This is the source code distribution for an implementation of the
+Aho-Corasick automaton in Java.  For license information, please see
+LICENSE.
+
+
+The following commands require Apache Ant, which can be found here:
+
+    http://ant.apache.org/
+
+
+
+Building the jar
+================
+
+To compile the jar, run `ant jar'.  The resulting jar should be
+created in:
+
+    dist/org.arabidopsis.ahocorasick-1.1.jar
+
+
+Building the documentation
+==========================
+
+To build the javadocs, run `ant javadoc'.  The javadocs should be created in:
+
+    javadoc/

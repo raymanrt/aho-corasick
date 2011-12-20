@@ -1,0 +1,10 @@
+Changes by Riccardo Tasso:
+
+    * generics introduced
+    * switch from bytes to characters, to represent strings (this enable UTF-8 support)
+
+Changes between 1.0 and 1.1:
+
+    * Per user request from Carsten Kruege, I've changed the signature
+      of State.getOutputs() and SearchResults.getOutputs() to Sets
+      rather than Lists.

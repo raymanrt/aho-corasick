@@ -1,0 +1,98 @@
+<project name="ahocorasick" default="compile">
+
+<property name="src" value="src"/>
+<property name="lib" value="lib"/>
+<property name="build" value="build"/>
+<property name="dist" value="dist"/>
+<property name="javadoc" value="javadoc"/>
+<property name="version" value="1.1"/>
+
+
+<!-- Load other global properties from local home directory -->
+<!-- For example, it's possible to use jikes globally by setting the
+     build.compiler property to "jikes". -->
+<property file="${user.home}/.ant-global.properties"/>
+
+
+
+<path id="project.classpath">
+  <fileset dir="${lib}">
+    <include name="**/*.jar" />
+  </fileset>
+</path>
+
+
+
+<target name="init">
+  <tstamp />
+  <mkdir dir="${build}" />
+  <mkdir dir="${dist}" />
+</target>
+
+
+
+<target name="compile" depends="init">
+  <javac srcdir="${src}" destdir="${build}"
+         source="1.4" debug="true">
+    <classpath refid="project.classpath" />
+  </javac>
+</target>
+
+
+
+<target name="javadoc">
+  <javadoc destdir="${javadoc}"
+           classpathref="project.classpath"
+           source="1.4">
+      <fileset dir="${src}" defaultexcludes="yes">
+          <include name="**/*.java"/>
+          <exclude name="**/Test*.java"/>
+          <exclude name="**/TimeTrial.java"/>
+      </fileset>
+  </javadoc>
+</target>
+
+
+
+<target name="jar" depends="clean,compile">
+   <jar destfile="${dist}/org.arabidopsis.ahocorasick-${version}.jar" 
+        basedir="${build}"/>
+</target>
+
+
+
+
+
+
+<!-- console test using junit -->
+<target name="junit" depends="compile">
+    <java fork="true" classname="junit.swingui.TestRunner"
+          taskname="junit" failonerror="true">
+        <arg value="org.arabidopsis.ahocorasick.TestAll"/>
+        <classpath>
+          <path refid="project.classpath"/>
+          <path location="${build}"/>
+	</classpath>
+    </java>
+</target>
+
+
+<!-- console test on /usr/share/dict/words -->
+<target name="TimeTrial" depends="compile">
+    <java fork="true" classname="org.arabidopsis.ahocorasick.TimeTrial"
+          failonerror="true" maxmemory="256m">
+        <classpath>
+          <path refid="project.classpath"/>
+          <path location="${build}"/>
+	</classpath>
+    </java>
+</target>
+
+
+
+
+<target name="clean">
+  <delete dir="${build}" />
+</target>
+
+</project>
