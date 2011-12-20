@@ -2,6 +2,7 @@ Changes by Riccardo Tasso:
 
     * generics introduced
     * switch from bytes to characters, to represent strings (this enable UTF-8 support)
+    * Benchmark class introduced
 
 Changes between 1.0 and 1.1:
 

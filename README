@@ -2,6 +2,21 @@ This is the source code distribution for an implementation of the
 Aho-Corasick automaton in Java.  For license information, please see
 LICENSE.
 
+*********************************************************************
+
+This implementations improve some aspects of a software written by
+Danny Yoo, available at https://hkn.eecs.berkeley.edu/~dyoo/java/index.html
+
+The starting version is 1.1
+
+The main changes are:
+* the use of Java Generics
+* the use of char[] data structure to represent text instead of byte[]; this makes the software compatible with UTF-8 strings
+* a Benchmark class, to test the improvements of using the Aho-Corasick algorithm instead of regular expressions
+
+*********************************************************************
+
+Here follows the original README:
 
 The following commands require Apache Ant, which can be found here:
 
