@@ -1,3 +1,8 @@
+Changes by xcurry:
+
+    * Switch build system to maven
+    * Reformat code
+
 Changes by Riccardo Tasso:
 
     * generics introduced
