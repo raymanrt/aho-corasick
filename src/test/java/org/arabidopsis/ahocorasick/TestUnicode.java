@@ -3,8 +3,11 @@ package org.arabidopsis.ahocorasick;
 import java.util.Iterator;
 import java.util.Set;
 
-public class Prove {
-  public static void main(String[] args) {
+import org.testng.annotations.Test;
+
+public class TestUnicode {
+  @Test
+  public void testUnicode() {
     AhoCorasick tree = new AhoCorasick();
 
     tree.add(".", ".".toCharArray());

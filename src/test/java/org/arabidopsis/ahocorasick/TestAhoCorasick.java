@@ -1,22 +1,31 @@
 package org.arabidopsis.ahocorasick;
 
-import junit.framework.TestCase;
 import java.util.Iterator;
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.HashSet;
 
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.fail;
+
 /**
  * Junit test cases for AhoCorasick.
  */
-public class TestAhoCorasick extends TestCase {
+public class TestAhoCorasick {
   private AhoCorasick tree;
 
+  @BeforeMethod
   public void setUp() {
     this.tree = new AhoCorasick();
   }
 
+  @Test
   public void testConstruction() {
     tree.add("hello", "hello".toCharArray());
     tree.add("hi", "hi".toCharArray());
@@ -48,6 +57,7 @@ public class TestAhoCorasick extends TestCase {
     assertTrue(s6 != null);
   }
 
+  @Test
   public void testExample() {
     tree.add("he", "he".toCharArray());
     tree.add("she", "she".toCharArray());
@@ -92,6 +102,7 @@ public class TestAhoCorasick extends TestCase {
     assertEquals(2, s5.getOutputs().size());
   }
 
+  @Test
   public void testStartSearchWithSingleResult() {
     tree.add("apple", "apple".toCharArray());
     tree.prepare();
@@ -103,6 +114,7 @@ public class TestAhoCorasick extends TestCase {
     assertEquals(null, tree.continueSearch(result));
   }
 
+  @Test
   public void testStartSearchWithAdjacentResults() {
     tree.add("john", "john".toCharArray());
     tree.add("jane", "jane".toCharArray());
@@ -112,6 +124,7 @@ public class TestAhoCorasick extends TestCase {
     assertEquals(null, tree.continueSearch(secondResult));
   }
 
+  @Test
   public void testStartSearchOnEmpty() {
     tree.add("cipher", new Integer(0));
     tree.add("zip", new Integer(1));
@@ -121,6 +134,7 @@ public class TestAhoCorasick extends TestCase {
     assertEquals(null, result);
   }
 
+  @Test
   public void testMultipleOutputs() {
     tree.add("x", "x");
     tree.add("xx", "xx");
@@ -143,6 +157,7 @@ public class TestAhoCorasick extends TestCase {
     assertEquals(null, tree.continueSearch(result));
   }
 
+  @Test
   public void testIteratorInterface() {
     tree.add("moo", "moo");
     tree.add("one", "one");
@@ -180,6 +195,7 @@ public class TestAhoCorasick extends TestCase {
     }
   }
 
+  @Test
   public void largerTextExample() {
     String text = "The ga3 mutant of Arabidopsis is a gibberellin-responsive dwarf. We present data" +
       "showing that the ga3-1 mutant is deficient in ent-kaurene oxidase activity, the first" +

@@ -1,8 +1,12 @@
 package org.arabidopsis.ahocorasick;
 
-import junit.framework.TestCase;
+import org.testng.annotations.Test;
 
-public class TestState extends TestCase {
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
+public class TestState {
+  @Test
   public void testSimpleExtension() {
     State s = new State(0);
     State s2 = s.extend("a".toCharArray()[0]);
@@ -10,6 +14,7 @@ public class TestState extends TestCase {
     assertEquals(2, s.size());
   }
 
+  @Test
   public void testSimpleExtensionSparse() {
     State s = new State(50);
     State s2 = s.extend((char) 3);
@@ -17,22 +22,26 @@ public class TestState extends TestCase {
     assertEquals(2, s.size());
   }
 
+  @Test
   public void testSingleState() {
     State s = new State(0);
     assertEquals(1, s.size());
   }
 
+  @Test
   public void testSingleStateSparse() {
     State s = new State(50);
     assertEquals(1, s.size());
   }
 
+  @Test
   public void testExtendAll() {
     State s = new State(0);
     State s2 = s.extendAll("hello world".toCharArray());
     assertEquals(12, s.size());
   }
 
+  @Test
   public void testExtendAllTwiceDoesntAddMoreStates() {
     State s = new State(0);
     State s2 = s.extendAll("hello world".toCharArray());
@@ -41,6 +50,7 @@ public class TestState extends TestCase {
     assertTrue(s2 == s3);
   }
 
+  @Test
   public void testExtendAllTwiceDoesntAddMoreStatesSparse() {
     State s = new State(50);
     State s2 = s.extendAll("hello world".toCharArray());
@@ -49,6 +59,7 @@ public class TestState extends TestCase {
     assertTrue(s2 == s3);
   }
 
+  @Test
   public void testAddingALotOfStatesIsOk() {
     State s = new State(0);
     for (int i = 0; i < 256; i++)
@@ -56,6 +67,7 @@ public class TestState extends TestCase {
     assertEquals(257, s.size());
   }
 
+  @Test
   public void testAddingALotOfStatesIsOkOnSparseRep() {
     State s = new State(50);
     for (int i = 0; i < 256; i++)

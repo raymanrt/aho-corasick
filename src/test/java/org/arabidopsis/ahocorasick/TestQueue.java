@@ -1,8 +1,13 @@
 package org.arabidopsis.ahocorasick;
 
-import junit.framework.TestCase;
+import org.testng.annotations.Test;
 
-public class TestQueue extends TestCase {
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
+
+public class TestQueue {
+  @Test
   public void testSimple() {
     Queue<State> q = new Queue<State>();
     State s1 = new State(0);
