@@ -16,7 +16,7 @@ public class Prove {
 		
 		tree.prepare();
 		
-		Iterator<SearchResult> it = tree.search("Questa prova è molto cattiva..".toCharArray());
+		Iterator<SearchResult> it = tree.search("Questa prova \u0232 molto cattiva..".toCharArray());
 		while(it.hasNext()) {
 			SearchResult sr = it.next();
 			System.out.println(sr.getLastIndex());
